@@ -35,7 +35,7 @@ ApiResponse.setApiVersion(API_VERSION);
 
 // Middleware
 app.use(cors({
-  origin: '*',
+  origin: ['https://amesgo2.vercel.app', 'http://localhost:3000', 'https://railway.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key'],
   credentials: true
@@ -43,7 +43,7 @@ app.use(cors({
 // Manter o middleware de segurança CORS para logs, mas não para bloquear
 app.use(corsSecurityMiddleware(process.env.ALLOWED_ORIGINS ? 
   process.env.ALLOWED_ORIGINS.split(',') : 
-  ['http://localhost:3000', 'http://localhost:8080', '*']));
+  ['http://localhost:3000', 'http://localhost:8080', 'https://railway.com', 'https://amesgo2.vercel.app']));
 app.use(helmet()); // Security headers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
