@@ -11,6 +11,15 @@
   ],
   "routes": [
     {
+      "src": "/api/auth(/?.*)",
+      "methods": ["POST", "GET", "OPTIONS"],
+      "dest": "https://mysql-production-639f.up.railway.app/api/v1/auth$1"
+    },
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "https://mysql-production-639f.up.railway.app/api/v1/$1"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "https://mysql-production-639f.up.railway.app/api/$1"
     },
