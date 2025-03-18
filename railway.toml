@@ -10,4 +10,9 @@ restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 5
 
 [variables]
-NODE_ENV = "production" 
+NODE_ENV = "production"
+
+# A configuração do MySQL será feita no Railway Dashboard
+# Não é necessário definir aqui, pois o Railway irá fornecer 
+# a variável DATABASE_URL automaticamente quando você adicionar
+# o serviço MySQL 
