@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://b4e89e65-6cc1-4878-857a-938e7934b66f.up.railway.app/api/$1"
+      "dest": "https://tidy-skirt-production.up.railway.app/api/$1"
     },
     {
       "handle": "filesystem"
