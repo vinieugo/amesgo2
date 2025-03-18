@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd server && npm install rimraf -g && npm install && npx prisma generate && npm run build"
+
+[deploy]
+startCommand = "cd server && npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 5
+
+[variables]
+NODE_ENV = "production" 

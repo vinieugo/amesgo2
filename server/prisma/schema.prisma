@@ -1,0 +1,66 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  admin
+  user
+  manager
+  guest
+  support
+  client
+  register
+}
+
+enum PatientStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model User {
+  id                   Int       @id @default(autoincrement())
+  username             String    @unique
+  email               String    @unique
+  password            String
+  role                UserRole  @default(user)
+  reset_password_token String?
+  reset_password_expire DateTime?
+  created_at          DateTime  @default(now())
+  updated_at          DateTime  @updatedAt
+  patients            Patient[]
+}
+
+model Patient {
+  id                  Int           @id @default(autoincrement())
+  name                String
+  full_name           String
+  cpf                 String        @unique
+  contact_number      String
+  municipality        String?
+  authorizer          String
+  has_coffee          Boolean       @default(false)
+  has_lunch           Boolean       @default(false)
+  breakfast           Boolean       @default(false)
+  lunch               Boolean       @default(false)
+  dinner              Boolean       @default(false)
+  start_date          DateTime      @default(now())
+  end_date            DateTime?
+  stay_date           DateTime      @default(now())
+  status              PatientStatus @default(ACTIVE)
+  observation         String?       @db.Text
+  initial_observation String?       @db.Text
+  created_at          DateTime      @default(now())
+  updated_at          DateTime      @updatedAt
+  created_by          Int?
+  creator             User?         @relation(fields: [created_by], references: [id])
+
+  @@index([created_by])
+}
+
+// Seus modelos serão adicionados aqui 

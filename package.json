@@ -1,0 +1,24 @@
+{
+  "name": "amesgo-system",
+  "version": "1.0.0",
+  "description": "Sistema web robusto para gerenciamento de pacientes e controle de refeições",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm run install:server && npm run install:client",
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "amesgo",
+    "healthcare",
+    "patient-management"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+} 
